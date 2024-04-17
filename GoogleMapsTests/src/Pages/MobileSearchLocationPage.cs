@@ -27,13 +27,11 @@ public class MobileSearchLocationPage : SearchLocationPage
     }
 
     public async Task CloseAppPopupAndroidAsync(){
-        if(_stayOnWebsiteButton != null)
-            await _stayOnWebsiteButton.ClickAsync();
+        await _stayOnWebsiteButton.TryClickLocatorAsync(2000);
     }
 
     public async Task CloseAppPopupIOSAsync(){
-        if(_noThanksButton != null)
-            await _noThanksButton.ClickAsync();
+        await _noThanksButton.TryClickLocatorAsync(2000);
     }
 
     public override async Task SearchLocationAsync(string searchTerm){
