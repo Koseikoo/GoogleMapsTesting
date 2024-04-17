@@ -14,7 +14,7 @@ This is a small example project testing the Google Maps Search functionality. It
 2. Install [PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.4)
 3. Download the Repository
 4. Open the project in VS Code
-5. Build Project with `dotnet build`
+5. Build Project with `dotnet build` and enter the project with `cd GoogleMapsTests`
 6. Setup Playwright `pwsh bin/Debug/net7.0/playwright.ps1 install`
 7. Run the tests through one of the following options:
    - Option 1: Install the Playwright Test for VS Code (by Microsoft) and run the tests inside the Test Explorer GUI
