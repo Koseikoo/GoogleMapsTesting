@@ -43,7 +43,7 @@ public class SearchLocationTests : PageTest{
     private async Task SearchLocation(SearchLocationPage page, string searchTerm, Location location){
         await page.SearchLocationAsync(searchTerm);
         await Expect(page.CantFindText).Not.ToBeVisibleAsync();
-        await Expect(page.AddressField).ToContainAddress(location.Address);
+        await Expect(page.AddressField).ToContainAddress(location.AddressMatch);
         await page.CloseSearchAsync();
     }
 

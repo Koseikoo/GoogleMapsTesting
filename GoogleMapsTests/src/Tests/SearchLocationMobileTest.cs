@@ -46,7 +46,7 @@ public class SearchLocationMobileTests : PageTest{
             await page.InteractWithResultAsync();
 
             await Expect(page.CantFindText).Not.ToBeVisibleAsync();
-            await Expect(page.AddressField).ToContainAddress(location.Address);
+            await Expect(page.AddressField).ToContainAddress(location.AddressMatch);
             await page.CloseSearchAsync();
     }
 

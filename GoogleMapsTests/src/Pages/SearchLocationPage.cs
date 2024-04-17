@@ -37,7 +37,7 @@ public class SearchLocationPage{
     public virtual async Task SearchLocationAsync(string searchTerm){
 
         await _searchBar.FillAsync(searchTerm);
-        await _searchButton.ClickAsync();
+        await _page.Keyboard.PressAsync("Enter");
     }
 
     public virtual async Task CloseSearchAsync(){
