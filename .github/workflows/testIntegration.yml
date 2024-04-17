@@ -17,12 +17,9 @@ jobs:
       
     - name: Restore dependencies
       run: dotnet restore
-
-    - name: Build Project
-      run: dotnet build
       
     - name: Install Playwright Browser Emulators
-      run: pwsh bin/Debug/net7.0/playwright.ps1 install  
+      run: pwsh GoogleMapsTests/bin/Debug/net7.0/playwright.ps1 install  
       
     - name: Run tests
       run: dotnet test
