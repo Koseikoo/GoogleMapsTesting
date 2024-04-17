@@ -31,8 +31,13 @@ public class SearchLocationPage{
     }
 
     public async Task AcceptCookiesAsync(){
-        if(_acceptCookiesButton != null)
-            await _acceptCookiesButton.ClickAsync();
+         var timeoutTask = Task.Delay(2000);
+        var elementTask = _acceptCookiesButton.ClickAsync();
+
+        var completedTask = await Task.WhenAny(timeoutTask, elementTask);
+        if (completedTask == elementTask) {
+            await elementTask;
+        }
     }
 
     public virtual async Task SearchLocationAsync(string searchTerm){
