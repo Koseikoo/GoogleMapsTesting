@@ -20,7 +20,7 @@ public class SearchLocationTests : PageTest{
     //[TestCase(PlaywrightTests.BrowserType.WebKit, DeviceType.Desktop_Safari)]
     public async Task SearchLocations(BrowserType browserType, DeviceType deviceType){
         // Setup
-        IBrowserContext browser = await SetupHelper.CreateBrowser(browserType, deviceType, timeoutInSeconds, false);
+        IBrowserContext browser = await SetupHelper.CreateBrowser(browserType, deviceType, timeoutInSeconds);
         SearchLocationPage page = new SearchLocationPage(await browser.NewPageAsync());
         
         // Navigate to Start Scenario
