@@ -5,7 +5,7 @@ using PlaywrightTests.Data;
 
 namespace PlaywrightTests.Tests;
 
-[TestFixture, Parallelizable(ParallelScope.Children)]
+[TestFixture]
 
 public class SearchInvalidLocationMobileTests : PageTest{
     private const float timeoutInSeconds = 10;
