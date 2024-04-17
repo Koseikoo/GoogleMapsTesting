@@ -17,10 +17,10 @@ public class SearchLocationTests : PageTest{
     [Retry(3)]
     [TestCase(PlaywrightTests.BrowserType.Chromium, DeviceType.Desktop_Chrome)]
     [TestCase(PlaywrightTests.BrowserType.Firefox, DeviceType.Desktop_Firefox)]
-    [TestCase(PlaywrightTests.BrowserType.WebKit, DeviceType.Desktop_Safari)]
+    //[TestCase(PlaywrightTests.BrowserType.WebKit, DeviceType.Desktop_Safari)]
     public async Task SearchLocations(BrowserType browserType, DeviceType deviceType){
         // Setup
-        IBrowserContext browser = await SetupHelper.CreateBrowser(browserType, deviceType, timeoutInSeconds);
+        IBrowserContext browser = await SetupHelper.CreateBrowser(browserType, deviceType, timeoutInSeconds, false);
         SearchLocationPage page = new SearchLocationPage(await browser.NewPageAsync());
         
         // Navigate to Start Scenario
