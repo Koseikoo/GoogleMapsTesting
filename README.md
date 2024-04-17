@@ -40,6 +40,9 @@ This is a small example project testing the Google Maps Search functionality. It
    - Run the test interactions from the pages
    - Assert the website state after the interactions through Playwright or the custom Google Maps assertions
 
+> [!TIP]
+> Screenshots are saved at `GoogleMapsTests/bin/Debug/net7.0/screenshots`
+
 > [!CAUTION]
 > Test cases using WebKit Desktop won’t work on Windows since the emulated WebKit window does not respond to certain actions neither manual nor through headless test cases (e.g., confirming search).
 > 

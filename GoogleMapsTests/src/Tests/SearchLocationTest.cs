@@ -10,6 +10,9 @@ namespace PlaywrightTests.Tests;
 public class SearchLocationTests : PageTest{
     private const float timeoutInSeconds = 10;
 
+    IPage _browserPage;
+    DeviceType _deviceType;
+
     [SetUp]
     public void SetUp(){
     }
@@ -19,15 +22,14 @@ public class SearchLocationTests : PageTest{
     [TestCase(PlaywrightTests.BrowserType.Firefox, DeviceType.Desktop_Firefox)]
     //[TestCase(PlaywrightTests.BrowserType.WebKit, DeviceType.Desktop_Safari)]
     public async Task SearchLocations(BrowserType browserType, DeviceType deviceType){
-        // Setup
-        IBrowserContext browser = await SetupHelper.CreateBrowser(browserType, deviceType, timeoutInSeconds);
-        SearchLocationPage page = new SearchLocationPage(await browser.NewPageAsync());
+        IBrowserContext browser = await SetupHelper.CreateBrowser(browserType, deviceType, timeoutInSeconds, false);
+        _browserPage = await browser.NewPageAsync();
+        _deviceType = deviceType;
+        SearchLocationPage page = new SearchLocationPage(_browserPage);
         
-        // Navigate to Start Scenario
         await page.OpenMapsAsync();
         await page.AcceptCookiesAsync();
 
-        // Location Testing
         foreach (var location in TestData.GetLocations()){
             await SearchLocation(page, location.Geolocation, location);
         }
@@ -35,7 +37,8 @@ public class SearchLocationTests : PageTest{
         foreach (var location in TestData.GetLocations()){
             await SearchLocation(page, location.Address, location);
         }
-        
+
+        await _browserPage.CloseAsync();
         await browser.CloseAsync();
         Assert.Pass();
     }
@@ -44,6 +47,7 @@ public class SearchLocationTests : PageTest{
         await page.SearchLocationAsync(searchTerm);
         await Expect(page.CantFindText).Not.ToBeVisibleAsync();
         await Expect(page.AddressField).ToContainAddress(location.AddressMatch);
+        await _browserPage.TakeScreenshot(searchTerm, _deviceType);
         await page.CloseSearchAsync();
     }
 
