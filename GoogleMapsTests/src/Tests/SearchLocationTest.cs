@@ -22,7 +22,7 @@ public class SearchLocationTests : PageTest{
     [TestCase(PlaywrightTests.BrowserType.Firefox, DeviceType.Desktop_Firefox)]
     //[TestCase(PlaywrightTests.BrowserType.WebKit, DeviceType.Desktop_Safari)]
     public async Task SearchLocations(BrowserType browserType, DeviceType deviceType){
-        IBrowserContext browser = await SetupHelper.CreateBrowser(browserType, deviceType, timeoutInSeconds, false);
+        IBrowserContext browser = await SetupHelper.CreateBrowser(browserType, deviceType, timeoutInSeconds);
         _browserPage = await browser.NewPageAsync();
         _deviceType = deviceType;
         SearchLocationPage page = new SearchLocationPage(_browserPage);
