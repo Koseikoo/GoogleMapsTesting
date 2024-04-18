@@ -5,7 +5,7 @@ This is a small example project testing the Google Maps Search functionality. It
 ## Technology Stack
 
 - C#
-- Playwright (JavaScript)
+- Playwright
 - NUnit
 
 ## Setup with VS Code
